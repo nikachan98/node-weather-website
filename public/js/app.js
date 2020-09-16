@@ -1,4 +1,4 @@
-console.log('working')
+// console.log('working')
 // fetch('http://puzzle.mead.io/puzzle').then((response) => {
 //     response.json().then(data => {
 //         console.log(data)
@@ -20,7 +20,7 @@ weatherForm.addEventListener('submit', e => {
     msgOne.textContent = 'Loading weather...'
     msgTwo.textContent = ''
 
-    fetch('http://localhost:3001/weather?address=' + location).then(response => {
+    fetch('/weather?address=' + location).then(response => {
     response.json().then((data) => {
         if(data.error){
              msgOne.textContent = data.error;
