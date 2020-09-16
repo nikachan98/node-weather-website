@@ -8,6 +8,8 @@ const forecast = (latitude, longitude, callback) => {
 
     let temp;
     let cloud;
+    let pressure;
+    let humidity;
     request({url, json:true}, (error, {body}) =>{
         if(error){
             callback('unable to connect', undefined)
@@ -17,7 +19,9 @@ const forecast = (latitude, longitude, callback) => {
         }else {
             temp = body.current.temperature;
             cloud = body.current.cloudcover;
-            callback(undefined, "The temperature is " + temp + "C and the sky is " + cloud + "% covered by clouds." )
+            pressure = body.current.pressure;
+            humidity = body.current.humidity;
+            callback(undefined, "Temperatura powietrza: " + temp + "C. Niebo jest pokryte chmurami w " + cloud + "procentach. Ciśnienie atmosferyczne wynosi " + pressure + "Hg. Wilgontość Powietrza to " + humidity + "%")
         }
     })
 };
